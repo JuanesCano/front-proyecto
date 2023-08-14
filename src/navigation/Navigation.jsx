@@ -7,6 +7,9 @@ import { colors } from "../config/colors";
 import { useUser } from "../hooks/userUser";
 import DetailScreen from "../screen/DetailScreen";
 import ViajeScreen from "../screen/ViajeScreen";
+import MenuScreen from "../screen/MenuScreen";
+import SugerenciaScreen from "../screen/SugerenciaScreen";
+import CuentaScreen from "../screen/CuentaScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -46,6 +49,12 @@ export const Navigation = () => {
       <Stack.Screen name= "DetailScreen" component = {PrivateRoutes(DetailScreen)}/>
 
       <Stack.Screen name= "ViajeScreen" component={PrivateRoutes(ViajeScreen)}/>
+
+      <Stack.Screen name = "MenuScreen" component={PrivateRoutes(MenuScreen)}/>
+
+      <Stack.Screen name = "SugerenciaScreen" component = {PrivateRoutes(SugerenciaScreen)}/>
+
+      <Stack.Screen name = "CuentaScreen" component = {PrivateRoutes(CuentaScreen)}/>
     </Stack.Navigator>
   );
 };

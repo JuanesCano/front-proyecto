@@ -18,6 +18,7 @@ import FormContainer from "../components/Form/FormContainer";
 import FormInput from "../components/Form/FormInput";
 import { SPACING } from "../config/spacing";
 import { colors } from "../config/colors";
+import MenuUser from "../hooks/MenuUser";
 
 const validationSchema = Yup.object({
   title: Yup.string()
@@ -42,12 +43,12 @@ export default function ViajeScreen({ route }) {
 
   const pickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
       allowsEditing: true,
       quality: 1,
     });
 
-    console.log(result);
+    console.log(result.assets[0].uri.split("/").pop());
 
     if (!result.canceled) {
       setImage(result.assets[0].uri);
@@ -207,6 +208,7 @@ export default function ViajeScreen({ route }) {
           </Formik>
         </FormContainer>
       </View>
+      <MenuUser />
     </>
   );
 }

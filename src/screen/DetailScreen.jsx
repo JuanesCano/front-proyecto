@@ -16,6 +16,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import { colors } from "../config/colors";
 import { SPACING } from "../config/spacing";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import MenuUser from "../hooks/MenuUser";
 
 const screenHeight = Dimensions.get("screen").height;
 
@@ -40,7 +41,11 @@ export default function DetailScreen({ route }) {
       setIsLoading(false);
     } catch (error) {
       setIsLoading(false);
-      console.log("Error en getViaje", error.response?.status, error.response?.data);
+      console.log(
+        "Error en getViaje",
+        error.response?.status,
+        error.response?.data
+      );
     }
   };
 
@@ -74,9 +79,10 @@ export default function DetailScreen({ route }) {
     <ScrollView>
       <View style={styles.imageContainer}>
         <View style={styles.imageBorder}>
-          <Image source={{ uri: viaje.imgUrl }} styles={styles.image} />
+          <Image source={{ uri: viaje.imgUrl }} style={styles.image} />
+          <Text>{viaje.imgUrl}</Text>
         </View>
-      </View> 
+      </View>
       {/* arrgelar el error no muestra la imagen */}
 
       <View style={{ marginTop: 20 }}>
@@ -119,15 +125,19 @@ export default function DetailScreen({ route }) {
       </View>
 
       <TouchableOpacity
-          style={styles.buttonRadius}
-          onPress={() => navigation.goBack()}
-        >
-            <Ionicons
-              name="arrow-back-outline"
-              color={"white"}
-              size={SPACING * 6}
-            />
-        </TouchableOpacity>
+        style={styles.buttonRadius}
+        onPress={() => navigation.goBack()}
+      >
+        <Ionicons
+          name="arrow-back-outline"
+          color={"white"}
+          size={SPACING * 5}
+        />
+      </TouchableOpacity>
+
+      <View style={styles.menuUserContainer}>
+        <MenuUser/>
+      </View>
     </ScrollView>
   );
 }
@@ -182,5 +192,11 @@ const styles = StyleSheet.create({
   gradient: {
     paddingHorizontal: SPACING,
     paddingVertical: SPACING / 3,
+  },
+
+  menuUserContainer: {
+    position: "absolute",
+    bottom: 115,
+    right: 0,
   },
 });

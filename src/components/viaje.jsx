@@ -32,7 +32,6 @@ export default function viaje({ viaje }) {
                     size = {30}/>
 
                 </LinearGradient>
-
             </TouchableOpacity>
         </View>
     </LinearGradient>
